@@ -1,0 +1,16 @@
+{
+  "name": "umbral-jev-guard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first text moderation backend for a browser content filter, powered by Jev.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

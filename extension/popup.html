@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Umbral Live</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div class="brand-mark" aria-hidden="true">U</div>
+        <div>
+          <h1>umbral<span> live.</span></h1>
+          <p data-i18n="subtitle">Filtro de contenido · Jev</p>
+        </div>
+        <button id="language-toggle" class="language-toggle" type="button" aria-label="Idioma">
+          <span data-language="en">EN</span><span class="language-divider">|</span><span data-language="es" class="selected">ES</span>
+        </button>
+        <div class="connection"><i></i> local</div>
+      </header>
+
+      <section class="panel checker">
+        <label class="live-toggle" for="live-toggle">
+          <span class="switch-label"><i></i> <span data-i18n="liveLabel">Escaneo automático en vivo</span></span>
+          <input id="live-toggle" type="checkbox" checked>
+        </label>
+        <p class="live-note" data-i18n="liveNote">Revisa cada cambio tras 100 ms. Puede generar muchas peticiones y costos; podés pausarlo cuando quieras.</p>
+        <label for="text" data-i18n="textLabel">Texto para analizar</label>
+        <textarea id="text" maxlength="12000" data-i18n-placeholder="textPlaceholder" placeholder="Pegá texto para comprobar cómo lo clasifica Jev…"></textarea>
+        <div class="form-footer">
+          <span id="char-count">0 / 12.000</span>
+          <div class="actions">
+            <button id="check-page" class="secondary" type="button"><span data-i18n="analyzePage">Analizar pestaña</span> <b aria-hidden="true">▤</b></button>
+            <button id="check" type="button"><span data-i18n="analyzeText">Analizar texto</span><b aria-hidden="true">↗</b></button>
+          </div>
+        </div>
+        <p id="status" class="status" role="status" data-i18n="ready">Listo para analizar</p>
+      </section>
+
+      <section id="result" class="panel result hidden" aria-live="polite">
+        <div class="result-heading"><span data-i18n="verdictTitle">VEREDICTO</span><strong id="verdict">—</strong></div>
+        <div id="hazards" class="hazards"></div>
+      </section>
+
+      <section class="costs">
+        <div class="section-heading"><span data-i18n="costsTitle">Gasto e historial</span><small data-i18n="rate">USD 0,042 / millón de tokens</small></div>
+        <div class="cost-grid">
+          <article class="panel cost-card"><span data-i18n="thisRequest">ESTA PETICIÓN</span><strong id="last-usd">$0.000000</strong><small id="last-ars">$0,00 ARS</small></article>
+          <article class="panel cost-card"><span data-i18n="lifetimeTotal">TOTAL HISTÓRICO</span><strong id="total-usd">$0.000000</strong><small id="total-ars">$0,00 ARS</small></article>
+        </div>
+        <div class="history-line"><span id="history-summary">0 análisis · 0 tokens</span><button id="clear-history" type="button" data-i18n="clearHistory">Borrar historial</button></div>
+        <div id="history-list" class="history-list" aria-label="Peticiones recientes" data-i18n-aria-label="recentRequests"></div>
+      </section>
+      <footer data-i18n="footer">Estimación basada en tokens de entrada · USD/ARS = 1.500</footer>
+    </main>
+    <script src="i18n.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

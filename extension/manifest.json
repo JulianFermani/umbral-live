@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Umbral Live — Real-time content filter",
+  "version": "0.1.0",
+  "description": "Real-time browser text filter powered by Jev, with reversible card blurring.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["http://127.0.0.1:8787/*", "<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["i18n.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Umbral Live — Content filter",
+    "default_popup": "popup.html"
+  }
+}
